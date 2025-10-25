@@ -1,0 +1,32 @@
+# Backup and optimized versions (already merged into main files)
+*-optimized.*
+index-optimized.html
+style-optimized.css
+app-optimized.js
+
+# Documentation files (optional - remove if you want to keep them)
+# *.md
+# !README.md
+
+# Test files
+test-performance.js
+PERFORMANCE-TEST-REPORT.txt
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local

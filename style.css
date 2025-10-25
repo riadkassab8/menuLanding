@@ -1,0 +1,670 @@
+:root {
+    --bg: #f8f9fa;
+    --card: #fff;
+    --muted: #6c757d;
+    --accent: #e63946;
+    --accent-2: #457b9d;
+    --accent-3: #2a9d8f;
+    --deep: #212529;
+    --light: #f8f9fa;
+    --glass: rgba(255, 255, 255, .8);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    --gradient: linear-gradient(135deg, #e63946 0%, #457b9d 100%)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(180deg, #e8f6f2 0%, #e8f6f2 100%);
+    font-family: Cairo, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;
+    color: var(--deep);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.navbar {
+    backdrop-filter: blur(10px);
+    background: var(--glass);
+    box-shadow: var(--shadow);
+    transition: all .3s ease;
+    padding-top: .75rem;
+    padding-bottom: .75rem
+}
+
+.navbar.scrolled {
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.brand {
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: .2px;
+    font-size: 1.5rem
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--deep);
+    position: relative;
+    margin: 0 .5rem;
+    transition: color .3s
+}
+
+.nav-link:hover {
+    color: var(--accent)
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background: var(--gradient);
+    transition: width .3s
+}
+
+.nav-link:hover::after {
+    width: 100%
+}
+
+.hero {
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(230, 57, 70, .05) 0%, rgba(69, 123, 157, .05) 100%);
+    z-index: 0
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(42, 157, 143, .05) 0%, rgba(233, 196, 106, .05) 100%);
+    z-index: 0
+}
+
+.hero-card {
+    background: var(--glass);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .2)
+}
+
+.mockup {
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .9), rgba(248, 249, 250, .8));
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, .3)
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px
+}
+
+.feature-card {
+    border-radius: 18px;
+    background: var(--card);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s;
+    border: 1px solid rgba(0, 0, 0, .03);
+    height: 100%;
+    position: relative;
+    overflow: hidden
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient)
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .12)
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(230, 57, 70, .1), rgba(69, 123, 157, .1));
+    color: var(--accent);
+    font-size: 30px;
+    margin-bottom: 1.5rem;
+    transition: transform .3s
+}
+
+.feature-card:hover .icon-circle {
+    transform: scale(1.1)
+}
+
+.price-card {
+    border-radius: 20px;
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(248, 249, 250, .9));
+    box-shadow: var(--shadow);
+    transition: transform .3s, box-shadow .3s;
+    border: 1px solid rgba(0, 0, 0, .05);
+    position: relative;
+    overflow: hidden
+}
+
+.price-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient)
+}
+
+.price-card.popular {
+    border: 1px solid rgba(69, 123, 157, .2);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(69, 123, 157, .15)
+}
+
+.price-card.popular::after {
+    content: "الأكثر طلباً";
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 30px;
+    transform: rotate(-45deg);
+    font-size: .8rem;
+    font-weight: 700
+}
+
+.btn-accent {
+    background: var(--gradient);
+    color: #000;
+    border: none;
+    box-shadow: 0 8px 20px rgba(230, 57, 70, .3);
+    font-weight: 600;
+    padding: .75rem 1.5rem;
+    border-radius: 12px;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden
+}
+
+.btn-accent:hover {
+    background: linear-gradient(135deg, #457b9d 0%, #e63946 100%);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(230, 57, 70, .4)
+}
+
+.btn-accent::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+    transition: left .5s
+}
+
+.btn-accent:hover::before {
+    left: 100%
+}
+
+.btn-outline-accent {
+    border: 2px solid var(--accent-2);
+    color: var(--accent-2);
+    background: 0 0;
+    font-weight: 600;
+    padding: .75rem 1.5rem;
+    border-radius: 12px;
+    transition: all .3s
+}
+
+.btn-outline-accent:hover {
+    background: #2e3338;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(69, 123, 157, .3)
+}
+
+footer {
+    background: linear-gradient(135deg, var(--deep) 0%, #343a40 100%);
+    padding: 3rem 0;
+    color: rgba(255, 255, 255, .7)
+}
+
+footer .brand {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: inline-block
+}
+
+.floaty {
+    animation: floaty 6s ease-in-out infinite;
+    transform-origin: center
+}
+
+@keyframes floaty {
+    0% {
+        transform: translateY(0) rotate(0)
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(-1deg)
+    }
+
+    100% {
+        transform: translateY(0) rotate(0)
+    }
+}
+
+.muted {
+    color: var(--muted)
+}
+
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    padding: .75rem 1rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    transition: all .3s
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, .2);
+    border-color: var(--accent)
+}
+
+.alert {
+    border-radius: 12px;
+    border: none;
+    padding: 1rem 1.5rem
+}
+
+.contact-form {
+    background: linear-gradient(180deg, #f8f9fa, #fff);
+    box-shadow: var(--shadow)
+}
+
+.qr-card-3d {
+    background: linear-gradient(180deg, #1a1a2e, #16213e);
+    box-shadow: var(--shadow);
+    min-height: 400px;
+    overflow: visible;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all .5s cubic-bezier(.23, 1, .32, 1);
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px)
+}
+
+.qr-card-3d::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, .1) 0%, rgba(118, 75, 162, .1) 50%, rgba(240, 147, 251, .1) 100%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity .5s;
+    pointer-events: none
+}
+
+.qr-card-3d:hover::before {
+    opacity: 1
+}
+
+.qr-card-3d:hover {
+    transform: perspective(1000px) rotateX(0) rotateY(0) translateZ(20px) scale(1.02);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .4), 0 0 60px rgba(102, 126, 234, .4)
+}
+
+.qr-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, .3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity .5s;
+    pointer-events: none;
+    animation: cardGlowPulse 3s ease-in-out infinite
+}
+
+.qr-card-3d:hover .qr-card-glow {
+    opacity: 1
+}
+
+.qr-card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .1), transparent);
+    transition: left .5s;
+    pointer-events: none
+}
+
+.qr-card-3d:hover .qr-card-shine {
+    left: 100%
+}
+
+.qr-content {
+    position: relative;
+    z-index: 2
+}
+
+.qr-title-cool {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: qrTitleShine 3s ease-in-out infinite;
+    padding-bottom: 30px;
+}
+
+.qr-instruction {
+    color: #fff;
+    font-size: .9rem;
+    opacity: .8
+}
+
+.qr-container-3d {
+    perspective: 1500px;
+    perspective-origin: center;
+    display: inline-block
+}
+
+.qr-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(102, 126, 234, .5), 0 0 0 10px rgba(255, 255, 255, .1), inset 0 0 20px rgba(255, 255, 255, .2), 0 50px 100px rgba(0, 0, 0, .3);
+    animation: qrFloat3D 4s ease-in-out infinite, qrGlow 2s ease-in-out infinite alternate;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(-10deg) translateZ(50px);
+    transition: transform .3s ease
+}
+
+.qr-wrapper:hover {
+    transform: rotateX(0) rotateY(0) translateZ(80px) scale(1.05);
+    animation-play-state: paused
+}
+
+.qr-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ff0000, #ff8c00, #40e0d0, #ff0080);
+    border-radius: 35px;
+    z-index: -1;
+    opacity: .7;
+    filter: blur(20px);
+    animation: qrRotate 4s linear infinite;
+    transform: translateZ(-30px)
+}
+
+.qr-wrapper::after {
+    content: "☕";
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 40px;
+    animation: qrBounce 1s ease-in-out infinite;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .3));
+    transform: translateZ(100px)
+}
+
+#coffeeQrcode {
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, .1), 0 10px 30px rgba(0, 0, 0, .2);
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(20px)
+}
+
+#coffeeQrcode::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, .3), transparent);
+    animation: qrShine 3s ease-in-out infinite
+}
+
+#coffeeQrcode img,
+#coffeeQrcode canvas {
+    display: block;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1
+}
+
+@keyframes qrFloat3D {
+    0% {
+        transform: rotateX(10deg) rotateY(-10deg) translateZ(50px) translateY(0)
+    }
+
+    25% {
+        transform: rotateX(15deg) rotateY(-5deg) translateZ(60px) translateY(-15px)
+    }
+
+    50% {
+        transform: rotateX(5deg) rotateY(5deg) translateZ(70px) translateY(-20px)
+    }
+
+    75% {
+        transform: rotateX(15deg) rotateY(10deg) translateZ(60px) translateY(-15px)
+    }
+
+    100% {
+        transform: rotateX(10deg) rotateY(-10deg) translateZ(50px) translateY(0)
+    }
+}
+
+@keyframes qrGlow {
+    0% {
+        box-shadow: 0 30px 80px rgba(102, 126, 234, .5), 0 0 0 10px rgba(255, 255, 255, .1), inset 0 0 20px rgba(255, 255, 255, .2), 0 50px 100px rgba(0, 0, 0, .3)
+    }
+
+    100% {
+        box-shadow: 0 35px 100px rgba(102, 126, 234, .7), 0 0 0 15px rgba(255, 255, 255, .2), inset 0 0 30px rgba(255, 255, 255, .3), 0 60px 120px rgba(0, 0, 0, .4)
+    }
+}
+
+@keyframes qrRotate {
+    0% {
+        transform: rotate(0) translateZ(-30px)
+    }
+
+    100% {
+        transform: rotate(360deg) translateZ(-30px)
+    }
+}
+
+@keyframes qrBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0) translateZ(100px)
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(10deg) translateZ(100px)
+    }
+}
+
+@keyframes qrShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg)
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg)
+    }
+}
+
+@keyframes cardGlowPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .3
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: .5
+    }
+}
+
+@keyframes qrTitleShine {
+
+    0%,
+    100% {
+        filter: brightness(1)
+    }
+
+    50% {
+        filter: brightness(1.3)
+    }
+}
+
+@media (max-width:992px) {
+    .hero {
+        padding: 100px 0 60px
+    }
+
+    .hero-card,
+    .mockup {
+        padding: 1.5rem
+    }
+
+    .price-card.popular::after {
+        top: 15px;
+        left: -35px;
+        font-size: .7rem
+    }
+}
+
+@media (max-width:768px) {
+    .qr-card-3d {
+        transform: perspective(800px) rotateX(0) rotateY(0)
+    }
+
+    .qr-card-3d:hover {
+        transform: perspective(800px) rotateX(0) rotateY(0) translateZ(10px) scale(1.01)
+    }
+}
+
+. qr-card-simple {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    min-height: 400px;
+    border: 1px solid #e0e0e0
+}
+
+.qr-simple-wrapper {
+    display: inline-block;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    border: 2px solid #f0f0f0
+}
+
+#coffeeQrcode {
+    display: inline-block
+}
+
+#coffeeQrcode img,
+#coffeeQrcode canvas {
+    display: block;
+    border-radius: 8px
+}
