@@ -1,1 +1,118 @@
-!function () { "use strict"; function e(e, t, n) { const o = document.getElementById("formFeedback"); o.style.display = "block", o.className = "alert", o.classList.add("alert-" + t), o.innerText = e, setTimeout((() => { o.style.display = "none" }), 6e3) } AOS.init({ once: !0, duration: 700 }), window.addEventListener("load", (function () { const e = document.getElementById("coffeeQrcode"); e && "undefined" != typeof QRCode && new QRCode(e, { text: "https://riadkassab8.github.io/coffee-corner/", width: 250, height: 250, colorDark: "#1a1a1a", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H }) })), window.addEventListener("scroll", (function () { const e = document.querySelector(".navbar"); e && (window.scrollY > 50 ? e.classList.add("scrolled") : e.classList.remove("scrolled")) })), document.querySelectorAll('a[href^="#"]').forEach((e => { e.addEventListener("click", (function (e) { const t = this.getAttribute("href"); if ("#" === t) return e.preventDefault(), void window.scrollTo({ top: 0, behavior: "smooth" }); const n = document.querySelector(t); if (n) { e.preventDefault(); const t = document.querySelector(".navbar"), o = t ? t.offsetHeight : 0, r = n.getBoundingClientRect().top + window.pageYOffset - o - 20; window.scrollTo({ top: r, behavior: "smooth" }); const a = document.querySelector(".navbar-collapse"); a && a.classList.contains("show") && new bootstrap.Collapse(a) } })) })); const t = document.getElementById("contactForm"); t && t.addEventListener("submit", (function (t) { t.preventDefault(); const n = document.getElementById("name").value.trim(), o = document.getElementById("phone").value.trim(); n && o ? (e("تم استلام طلبك — سنقوم بالتواصل معك خلال 24 ساعة. شكراً لك!", "success"), this.reset()) : e("من فضلك املأ الاسم ورقم الهاتف", "danger") })); const n = document.getElementById("demoBtn"); n && n.addEventListener("click", (function () { e("طلب معاينة قيد الإرسال... سنعاود التواصل قريباً.", "info") })); const o = document.querySelector(".qr-wrapper"), r = document.querySelector(".qr-container-3d"); r && o && (r.addEventListener("mousemove", (function (e) { const t = r.getBoundingClientRect(), n = e.clientX - t.left, a = e.clientY - t.top, c = t.width / 2, s = t.height / 2, i = (a - s) / 10, d = (c - n) / 10; o.style.transform = `rotateX(${i}deg) rotateY(${d}deg) translateZ(80px)` })), r.addEventListener("mouseleave", (function () { o.style.transform = "rotateX(10deg) rotateY(-10deg) translateZ(50px)" }))); const a = document.querySelector(".qr-card-3d"); a && (a.addEventListener("mousemove", (function (e) { const t = a.getBoundingClientRect(), n = e.clientX - t.left, o = e.clientY - t.top, r = t.width / 2, c = t.height / 2, s = (o - c) / 15, i = (r - n) / 15; a.classList.add("tilt-active"), a.style.transform = `perspective(1000px) rotateX(${-s}deg) rotateY(${i}deg) translateZ(20px)`; const d = a.querySelector(".qr-card-glow"); d && (d.style.background = `radial-gradient(circle at ${n}px ${o}px, rgba(102, 126, 234, 0.4) 0%, transparent 70%)`) })), a.addEventListener("mouseleave", (function () { a.classList.remove("tilt-active"), a.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)"; const e = a.querySelector(".qr-card-glow"); e && (e.style.background = "radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%)") }))) }();
+// Initialize AOS with mobile optimization
+if (typeof AOS !== 'undefined') {
+    // Disable AOS on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    AOS.init({
+        once: true,
+        duration: 700,
+        disable: isMobile ? true : false, // Disable on mobile
+        offset: 50,
+        easing: 'ease-in-out'
+    });
+}
+
+// QR Code initialization
+window.addEventListener('load', function () {
+    const coffeeQrcodeElement = document.getElementById('coffeeQrcode');
+    if (coffeeQrcodeElement && typeof QRCode !== 'undefined') {
+        new QRCode(coffeeQrcodeElement, {
+            text: 'https://riadkassab8.github.io/coffee-corner/',
+            width: 250,
+            height: 250,
+            colorDark: '#1a1a1a',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+
+        if (href === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        const targetElement = document.querySelector(href);
+
+        if (targetElement) {
+            e.preventDefault();
+
+            // Close mobile menu first if open
+            const navCollapse = document.querySelector('.navbar-collapse');
+            if (navCollapse && navCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navCollapse);
+            }
+
+            // Wait a bit for menu to close on mobile, then scroll
+            setTimeout(() => {
+                const navbar = document.querySelector('.navbar');
+                const isMobile = window.innerWidth < 768;
+                const navbarHeight = navbar ? navbar.offsetHeight : (isMobile ? 70 : 80);
+
+                // Get element position
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, navCollapse && navCollapse.classList.contains('show') ? 300 : 0);
+        }
+    });
+});
+
+// Contact form handling
+const form = document.getElementById('contactForm');
+if (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        if (!name || !phone) {
+            showFeedback('من فضلك املأ الاسم ورقم الهاتف', 'danger');
+            return;
+        }
+
+        showFeedback('تم استلام طلبك — سنقوم بالتواصل معك خلال 24 ساعة. شكراً لك!', 'success');
+        form.reset();
+    });
+}
+
+// Demo button
+const demoBtn = document.getElementById('demoBtn');
+if (demoBtn) {
+    demoBtn.addEventListener('click', function () {
+        showFeedback('طلب معاينة قيد الإرسال... سنعاود التواصل قريباً.', 'info');
+    });
+}
+
+// Feedback function
+function showFeedback(msg, type) {
+    const feedback = document.getElementById('formFeedback');
+    feedback.style.display = 'block';
+    feedback.className = 'alert';
+    feedback.classList.add('alert-' + type);
+    feedback.innerText = msg;
+    setTimeout(() => {
+        feedback.style.display = 'none';
+    }, 6000);
+}

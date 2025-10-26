@@ -20,7 +20,14 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px
+    scroll-padding-top: 80px;
+}
+
+/* Mobile scroll padding */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
 }
 
 body {
@@ -667,4 +674,167 @@ footer .brand {
 #coffeeQrcode canvas {
     display: block;
     border-radius: 8px
+}
+
+/* C
+ool Button from Uiverse */
+.cool-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.cool-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.cool-button:hover::before {
+    opacity: 1;
+}
+
+.cool-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.cool-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.cool-button-text {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.cool-button:hover .cool-button-text {
+    transform: translateX(-5px);
+}
+
+.cool-button-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    transition: transform 0.4s ease;
+}
+
+.cool-button:hover .cool-button-icon {
+    transform: translateX(5px);
+}
+
+.cool-button-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Ripple effect */
+.cool-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cool-button:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Glow animation */
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(102, 126, 234, 0.8);
+    }
+}
+
+.cool-button:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Mobil
+e scroll fix */
+@media (max-width: 768px) {
+
+    /* Disable AOS animations on mobile */
+    [data-aos] {
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Ensure smooth scrolling */
+    html {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Fix QR section */
+    #demo {
+        overflow: visible;
+        position: relative;
+    }
+
+    .qr-card-simple {
+        overflow: visible;
+        transform: none !important;
+    }
+}
+
+
+/* Fix label spacing in RTL - separate text from arrow */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    word-spacing: 3px;
+    letter-spacing: 0.3px;
+}
+
+/* Add space between label text and any following content */
+.form-label::after {
+    content: '';
+    display: inline-block;
+    width: 5px;
+}
+
+/* Fix select dropdown arrow spacing */
+.form-select {
+    padding-left: 2.5rem !important;
+    background-position: left 0.75rem center !important;
 }
