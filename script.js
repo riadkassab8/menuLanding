@@ -13,10 +13,24 @@ if (typeof AOS !== 'undefined') {
 
 // QR Code initialization
 window.addEventListener('load', function () {
+    // Coffee Corner QR Code
     const coffeeQrcodeElement = document.getElementById('coffeeQrcode');
     if (coffeeQrcodeElement && typeof QRCode !== 'undefined') {
         new QRCode(coffeeQrcodeElement, {
             text: 'https://riadkassab8.github.io/coffee-corner/',
+            width: 250,
+            height: 250,
+            colorDark: '#1a1a1a',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+    // Restaurant Menu QR Code
+    const restaurantQrcodeElement = document.getElementById('restaurantQrcode');
+    if (restaurantQrcodeElement && typeof QRCode !== 'undefined') {
+        new QRCode(restaurantQrcodeElement, {
+            text: 'https://riadkassab8.github.io/New_same_menu_site/',
             width: 250,
             height: 250,
             colorDark: '#1a1a1a',
